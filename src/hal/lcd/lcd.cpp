@@ -113,6 +113,7 @@ namespace HAL {
     }
 
     void Lcd::setString(char *string) {
+
         uint8 i = 0;
         while(string[i] != '\0' ) {
             setChar(string[i]);

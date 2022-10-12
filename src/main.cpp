@@ -16,9 +16,9 @@ github : https://github.com/MrAhmedSayedAli
 #include "util/delay.h"
 
 
-uint8 customChar[] = {
-        0x00, 0x00, 0x0C, 0x12, 0x01, 0x3E, 0x00, 0x1C
-};
+//uint8 customChar[] = {
+//        0x00, 0x00, 0x0C, 0x12, 0x01, 0x3E, 0x00, 0x1C
+//};
 
 int main() {
 
@@ -32,7 +32,7 @@ int main() {
 //    HAL::Buzzer buzzer(DIO::Channel::A3);
 
 
-
+/*
     HAL::Keypad keybad(
             DIO::Channel::D0,
             DIO::Channel::D1,
@@ -44,7 +44,7 @@ int main() {
             DIO::Channel::D6,
             DIO::Channel::D7
     );
-
+*/
     HAL::Lcd lcd(
             DIO::Channel::B1,
             DIO::Channel::B2,
@@ -56,20 +56,27 @@ int main() {
     );
 
 
-    lcd.setCustomChar(0, customChar);
-    lcd.setPos(1, 1);
-    lcd.setChar(0);
-    lcd.setPos(1, 2);
-    lcd.setString("Ahmed Elsayed");
-    uint8 keypadVr = 0;
+//    lcd.setCustomChar(0, customChar);
+//    lcd.setPos(1, 1);
+//    lcd.setChar(0);
+//    lcd.setPos(1, 2);
+
+    lcd.setChar('A'); //work
+    lcd.setChar('H');
+    lcd.setChar('M');
+    lcd.setChar('E');
+    lcd.setChar('D');
+
+//    lcd.setString("Ahmed Elsayed"); //not work;
+//    uint8 keypadVr = 0;
     while (1) {
 
 
-        keypadVr = keybad.getKey();
-
-        if (keypadVr != 0) {
-            lcd.setChar(keypadVr);
-        }
+//        keypadVr = keybad.getKey();
+//
+//        if (keypadVr != 0) {
+//            lcd.setChar(keypadVr);
+//        }
 /*
         led1.on();
         led2.off();
