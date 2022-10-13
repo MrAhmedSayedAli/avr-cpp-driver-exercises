@@ -16,11 +16,13 @@ github : https://github.com/MrAhmedSayedAli
 #include "util/delay.h"
 
 
+
 //uint8 customChar[] = {
 //        0x00, 0x00, 0x0C, 0x12, 0x01, 0x3E, 0x00, 0x1C
 //};
 
 int main() {
+
 
 
 
@@ -31,7 +33,8 @@ int main() {
 //
 //    HAL::Buzzer buzzer(DIO::Channel::A3);
 
-
+    HAL::Led led01(DIO::Channel::C6);
+    HAL::Led led02(DIO::Channel::C7,STD_LevelType::HIGH);
 /*
     HAL::Keypad keybad(
             DIO::Channel::D0,
@@ -71,6 +74,9 @@ int main() {
 //    uint8 keypadVr = 0;
     while (1) {
 
+        led01.toggle();
+        led02.toggle();
+        _delay_ms(100);
 
 //        keypadVr = keybad.getKey();
 //

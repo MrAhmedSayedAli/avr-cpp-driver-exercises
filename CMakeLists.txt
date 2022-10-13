@@ -3,13 +3,14 @@ cmake_minimum_required(VERSION 3.15)
 #============================================================================================>
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/output")
 #============================================================================================>
-option(USE_ATMEL "USE ATML" on)
+option(USE_ATMEL "USE ATML" OFF)
 
 
 if (USE_ATMEL)
 	set(CMAKE_FIND_ROOT_PATH "C:/Program Files/Microchip/xc8/v2.36")
 else(USE_ATMEL)
-	set(CMAKE_FIND_ROOT_PATH "F:/AVR/WinAVR")
+#	set(CMAKE_FIND_ROOT_PATH "F:/AVR/WinAVR")
+	set(CMAKE_FIND_ROOT_PATH "F:/AVR/avr-gcc-12.1.0-x64-windows")
 endif ()
 
 set(AVR_MCU atmega32)
@@ -33,7 +34,7 @@ set(CMAKE_CXX_COMPILER ${AVR_CXX} CACHE STRING "c++ compiler" FORCE)
 set(CMAKE_C_COMPILER ${AVR_CC} CACHE STRING "c compiler" FORCE)
 set(CMAKE_OBJCOPY ${AVR_OBJCOPY} CACHE STRING "AVR OBJCOPY" FORCE)
 
-set (CMAKE_CXX_FLAGS "-std=c++11 -mmcu=${AVR_MCU} -O1 -DF_CPU=${MCU_SPEED} ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-std=c++20 -mmcu=${AVR_MCU} -O1 -DF_CPU=${MCU_SPEED} ${CMAKE_CXX_FLAGS}")
 
 #============================================================================================>
 PROJECT(DIO-CPP CXX)
