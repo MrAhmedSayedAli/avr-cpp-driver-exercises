@@ -34,7 +34,7 @@ set(CMAKE_CXX_COMPILER ${AVR_CXX} CACHE STRING "c++ compiler" FORCE)
 set(CMAKE_C_COMPILER ${AVR_CC} CACHE STRING "c compiler" FORCE)
 set(CMAKE_OBJCOPY ${AVR_OBJCOPY} CACHE STRING "AVR OBJCOPY" FORCE)
 
-set (CMAKE_CXX_FLAGS "-std=c++20 -mmcu=${AVR_MCU} -O1 -DF_CPU=${MCU_SPEED} ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-std=c++11 -mmcu=${AVR_MCU} -O1 -DF_CPU=${MCU_SPEED} ${CMAKE_CXX_FLAGS}")
 
 #============================================================================================>
 PROJECT(DIO-CPP CXX)
