@@ -71,48 +71,48 @@ namespace HAL {
 
     void Lcd::cmd(uint8 command) {
 
-        uint8 portValue = 0;
-
-        dio.writeChannel(PIN_RS,STD_LevelType::LOW);
-
-        portValue = dio.readPort(LCD_DATA_PORT);
-        portValue = (portValue & 0x0F) | (command & 0xF0);
-
-        dio.writePort(LCD_DATA_PORT,portValue);
-        dio.writeChannel(PIN_E,STD_LevelType::LOW);
-        _delay_ms(100);
-        dio.writeChannel(PIN_E,STD_LevelType::HIGH);
-
-        _delay_ms(5);
-
-        portValue = dio.readPort(LCD_DATA_PORT);
-        portValue = (portValue & 0x0F) | (command << 4);
-
-        dio.writePort(LCD_DATA_PORT,portValue);
-        dio.writeChannel(PIN_E,STD_LevelType::LOW);
-        _delay_ms(100);
-        dio.writeChannel(PIN_E,STD_LevelType::HIGH);
-        _delay_ms(2);
-
-//        dio.writeChannel(PIN_RS, STD_LevelType::LOW);
+//        uint8 portValue = 0;
 //
-//        cmd4Bit(command);
+//        dio.writeChannel(PIN_RS,STD_LevelType::LOW);
 //
-//        dio.writeChannel(PIN_E, STD_LevelType::LOW);
+//        portValue = dio.readPort(LCD_DATA_PORT);
+//        portValue = (portValue & 0x0F) | (command & 0xF0);
+//
+//        dio.writePort(LCD_DATA_PORT,portValue);
+//        dio.writeChannel(PIN_E,STD_LevelType::LOW);
 //        _delay_ms(100);
-//        dio.writeChannel(PIN_E, STD_LevelType::HIGH);
+//        dio.writeChannel(PIN_E,STD_LevelType::HIGH);
+//
 //        _delay_ms(5);
 //
-//        cmd4Bit((command << 4));
+//        portValue = dio.readPort(LCD_DATA_PORT);
+//        portValue = (portValue & 0x0F) | (command << 4);
 //
-//        dio.writeChannel(PIN_E, STD_LevelType::LOW);
+//        dio.writePort(LCD_DATA_PORT,portValue);
+//        dio.writeChannel(PIN_E,STD_LevelType::LOW);
 //        _delay_ms(100);
-//        dio.writeChannel(PIN_E, STD_LevelType::HIGH);
+//        dio.writeChannel(PIN_E,STD_LevelType::HIGH);
 //        _delay_ms(2);
+
+        dio.writeChannel(PIN_RS, STD_LevelType::LOW);
+
+        cmd4Bit(command << 4);
+
+        dio.writeChannel(PIN_E, STD_LevelType::LOW);
+        _delay_ms(100);
+        dio.writeChannel(PIN_E, STD_LevelType::HIGH);
+        _delay_ms(5);
+
+        cmd4Bit((command << 4));
+
+        dio.writeChannel(PIN_E, STD_LevelType::LOW);
+        _delay_ms(100);
+        dio.writeChannel(PIN_E, STD_LevelType::HIGH);
+        _delay_ms(2);
 
     }
 
-    void Lcd::setString(char *string) {
+    void Lcd::setString(const char *string) {
 
         uint8 i = 0;
         while(string[i] != '\0' ) {
@@ -128,22 +128,22 @@ namespace HAL {
 
         portValue = dio.readPort(LCD_DATA_PORT);
         portValue = (portValue & 0x0F) | (data & 0xF0);
-
         dio.writePort(LCD_DATA_PORT,portValue);
+
         dio.writeChannel(PIN_E,STD_LevelType::LOW);
-        _delay_ms(100);
+        _delay_us(100);
         dio.writeChannel(PIN_E,STD_LevelType::HIGH);
 
-        _delay_ms(5);
+        _delay_us(5);
 
         portValue = dio.readPort(LCD_DATA_PORT);
         portValue = (portValue & 0x0F) | (data << 4);
-
         dio.writePort(LCD_DATA_PORT,portValue);
+
         dio.writeChannel(PIN_E,STD_LevelType::LOW);
-        _delay_ms(100);
+        _delay_us(100);
         dio.writeChannel(PIN_E,STD_LevelType::HIGH);
-        _delay_ms(2);
+        _delay_us(2);
     }
 
     void Lcd::setPos(uint8 line, uint8 pos) {

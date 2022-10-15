@@ -19,7 +19,7 @@ namespace HAL {
     class Lcd {
     public:
         Lcd(DIO::Channel RS,DIO::Channel RW,DIO::Channel E,DIO::Channel LCD_D4,DIO::Channel LCD_D5,DIO::Channel LCD_D6,DIO::Channel LCD_D7);
-        void setString(char *string);
+        void setString(const char *string);
         void setChar(uint8 data);
         void setPos(uint8 line,uint8 pos);
         void setCharPos(uint8 line,uint8 pos,uint8 data);
